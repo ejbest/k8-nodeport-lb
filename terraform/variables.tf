@@ -3,6 +3,6 @@ variable "aws_region" {
 }
 
 variable "cluster-name" {
-  default = "terraform-eks-demo"
+  default = "k8-nodeport"
   type    = string
 }

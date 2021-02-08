@@ -5,7 +5,7 @@
 #
 
 resource "aws_iam_role" "demo-node" {
-  name = "terraform-eks-demo-node"
+  name = "k8-nodeport-node"
 
   assume_role_policy = <<POLICY
 {
@@ -48,6 +48,10 @@ resource "aws_eks_node_group" "demo" {
     desired_size = 1
     max_size     = 1
     min_size     = 1
+  }
+
+  remote_access {
+    ec2_ssh_key = "eks-test"
   }
 
   depends_on = [

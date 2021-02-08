@@ -4,8 +4,8 @@ metadata:
   annotations:
   creationTimestamp: null
   labels:
-    io.kompose.service: wtest
-  name: wtest
+    io.kompose.service: nodetest
+  name: nodetest
 spec:
   ports:
     - name: "80"

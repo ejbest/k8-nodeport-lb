@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wtest
+  name: nodetest
   labels:
-    app: wtest
+    app: nodetest
 spec:
   selector:
     matchLabels:
-      app: wtest
+      app: nodetest
   replicas: 4
   template:
     metadata:
       labels:
-        app: wtest
+        app: nodetest
     spec:
       containers:
-      - name: wtest
-        image: ejbest/wtest
+      - name: nodetest
+        image: ejbest/nodetest
         ports:
         - containerPort: 8080
        # command: ["top"]
