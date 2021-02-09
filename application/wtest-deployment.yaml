@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wtest
+  labels:
+    app: wtest
+spec:
+  selector:
+    matchLabels:
+      app: wtest
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: wtest
+    spec:
+      containers:
+      - name: wtest
+        image: ejbest/wtest
+        ports:
+        - containerPort: 8080
+       # command: ["top"]
+       

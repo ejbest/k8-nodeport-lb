@@ -7,9 +7,9 @@ aws eks --region us-east-1 update-kubeconfig --name k8-nodeport
 kubectl create namespace nodetestnamespace
 
 kubectl apply -n nodetestnamespace -f nodetest-deployment.yaml
-kubectl apply -n nodetestnamespace -f nodetest-service.yaml
+#kubectl apply -n nodetestnamespace -f nodetest-service.yaml
 kubectl apply -n nodetestnamespace -f nodetest-node-service.yaml 
-kubectl expose deployment nodetest --type=LoadBalancer --port=80 --name=my-nodetest -n nodetestnamespace
+# kubectl expose deployment nodetest --type=LoadBalancer --port=80 --name=my-nodetest -n nodetestnamespace
 
 kubectl get svc,nodes,pods,deployments -n nodetestnamespace
 

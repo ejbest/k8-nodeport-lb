@@ -5,6 +5,29 @@
 #  * EKS Cluster
 #
 
+resource "aws_security_group" "eks_nodes" {
+  name        = "node_sg"
+  description = "Security group for all nodes in the cluster"
+  vpc_id      =  aws_vpc.demo.id
+  
+ ingress {
+    from_port   = 30007
+    to_port     = 30007
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+tags = {
+    Name  = "eks_node"
+  }
+}
+
 resource "aws_iam_role" "demo-cluster" {
   name = "k8-nodeport-cluster"
 
@@ -51,6 +74,7 @@ resource "aws_security_group" "demo-cluster" {
   }
 }
 
+
 resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
   cidr_blocks       = [local.workstation-external-cidr]
   description       = "Allow workstation to communicate with the cluster API Server"
@@ -90,6 +114,9 @@ resource "aws_security_group_rule" "demo-cluster-ingress-workstation-5000" {
   to_port           = 5000
   type              = "ingress"
 }
+
+
+
 
 resource "aws_eks_cluster" "demo" {
   name     = var.cluster-name
