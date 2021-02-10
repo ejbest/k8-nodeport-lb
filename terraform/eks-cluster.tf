@@ -74,7 +74,6 @@ resource "aws_security_group" "demo-cluster" {
   }
 }
 
-
 resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
   cidr_blocks       = [local.workstation-external-cidr]
   description       = "Allow workstation to communicate with the cluster API Server"
@@ -114,9 +113,6 @@ resource "aws_security_group_rule" "demo-cluster-ingress-workstation-5000" {
   to_port           = 5000
   type              = "ingress"
 }
-
-
-
 
 resource "aws_eks_cluster" "demo" {
   name     = var.cluster-name

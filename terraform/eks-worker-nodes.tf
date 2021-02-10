@@ -51,10 +51,8 @@ resource "aws_eks_node_group" "demo" {
   }
 
   remote_access {
-    ec2_ssh_key = "eks"
+    ec2_ssh_key = "eks-test"
   }
-
-  
 
   depends_on = [
     aws_iam_role_policy_attachment.demo-node-AmazonEKSWorkerNodePolicy,
